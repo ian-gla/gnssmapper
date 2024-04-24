@@ -4,9 +4,10 @@ requires = [
     "wheel"
 ]
 build-backend = "setuptools.build_meta"
+
 [tool.black]
 exclude = '''
-/(
+(
         \.git
       | \.hg
       | \.mypy_cache
@@ -16,10 +17,10 @@ exclude = '''
       | buck-out
       | build
       | dist
-      | docs
+      | docs/*
 
       # The following are specific to Black, you probably don't want those.
       | blib2to3
       | tests/data
-    )/
+    )
 '''

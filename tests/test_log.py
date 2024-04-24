@@ -17,6 +17,7 @@ class TestReadCSV(unittest.TestCase):
         THIS_DIR = os.path.dirname(os.path.abspath(__file__))
         self.filedir = "data/"
         self.filepath = os.path.join(THIS_DIR, self.filedir, "log_20200211.txt")
+        assert os.path.exists(self.filepath)
 
     def test_read_csv_(self) -> None:
         raw_var, fix = log.read_csv_(self.filepath)
@@ -63,14 +64,22 @@ class TestReadCSV(unittest.TestCase):
 
     def test_platform(self) -> None:
         # copy of log.txt with platform replaced by 6
-        wrong_platform = self.filedir + "wrong_platform.txt"
+        THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+        self.filedir = "data/"
+        self.filepath = os.path.join(THIS_DIR, self.filedir, "wrong_platform.txt")
+        assert os.path.exists(self.filepath)
+        wrong_platform = self.filepath
         self.assertWarnsRegex(
             UserWarning, "Platform 6 found in log file", log.read_csv_, wrong_platform
         )
 
     def test_version(self) -> None:
         # copy of log.txt with version replaced by 1.3.9.9
-        wrong_version = self.filedir + "wrong_version.txt"
+        THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+        self.filedir = "data/"
+        self.filepath = os.path.join(THIS_DIR, self.filedir, "wrong_version.txt")
+        assert os.path.exists(self.filepath)
+        wrong_version = self.filepath
         self.assertRaisesRegex(
             ValueError,
             "Version 1.3.9.9 found in log file",
