@@ -24,20 +24,20 @@ For more details see:
 
 Requirements
 ============
-GnssMapper depends on the GeoPandas package and its underlying dependencies, including PyGeos. If you do not have these installed, we recommend following the `instructions <https://gnssmapper.readthedocs.io/en/latest/getting_started/installation.html>`__.
+GnssMapper depends on the GeoPandas package and its underlying dependencies. If you do not have these installed, we recommend following the `instructions <https://gnssmapper.readthedocs.io/en/latest/getting_started/installation.html>`__.
 
 GnssMapper has only been tested with the following setup:  
     Python     : 3.9.1
     GEOS       : 3.9.0  
-    GDAL       : 3.2.1  
-    PROJ       : 7.2.1  
-    geopandas  : 0.8.2  
-    pandas     : 1.2.2  
-    fiona      : 1.8.18  
-    numpy      : 1.19.5  
-    shapely    : 1.7.1  
-    pyproj     : 3.0.0.post1  
-    pygeos     : 0.9  
+    GDAL       : 3.4.1  
+    PROJ       : 8.2.1  
+    geopandas  : 0.14.3  
+    pandas     : 2.2.2  
+    fiona      : 1.9.6  
+    numpy      : 1.26.5  
+    shapely    : 2.0.3  
+    pyproj     : 3.6.1  
+     
 
 Installation
 ============
