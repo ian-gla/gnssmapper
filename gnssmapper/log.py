@@ -278,8 +278,6 @@ def join_receiver_position(
     clean_fix["(UTC)TimeInMs"] = clean_fix["(UTC)TimeInMs"].astype("int64")
     clean_obs = gnss_obs.dropna(subset=["time_ms"]).sort_values("time_ms")
     clean_obs["time_ms"] = clean_obs["time_ms"].astype("int64")
-    print(f"{clean_fix['(UTC)TimeInMs']=}")
-    print(f"{clean_obs['time_ms']=}")
     df = pd.merge_asof(
         clean_obs,
         clean_fix,

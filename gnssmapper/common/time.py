@@ -15,7 +15,7 @@ def gps_to_utc(time: pd.Series) -> pd.Series:
     time_int = time.astype(INT_64)
     # origin defined indirectly due to incompatibility with Int64
     ts_gps = pd.to_datetime(time_int + gps_epoch.value, unit="ns")
-    # iterates leapsecond calculation to avoid problems at rollover.
+    # iterates leap second calculation to avoid problems at rollover.
 
     ts_estimate = ts_gps - pd.to_timedelta(leap_seconds(ts_gps), unit="s")
     return ts_gps - pd.to_timedelta(leap_seconds(ts_estimate), unit="s")
@@ -24,7 +24,6 @@ def gps_to_utc(time: pd.Series) -> pd.Series:
 def utc_to_gps(time: pd.Series) -> pd.Series:
     """Converts utc datetime into nanos since gps epoch."""
 
-    print(f"{pd.to_timedelta(leap_seconds(time), unit='s', errors='coerce')=}")
     delta = (
         time.array
         + pd.to_timedelta(leap_seconds(time), unit="s", errors="coerce")
