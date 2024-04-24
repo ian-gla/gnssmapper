@@ -21,3 +21,6 @@ gnssmapper/data/orbits/*
 examplefiles/*
 !examplefiles/gnss_log_2020_02_11_08_49_29.txt
 !examplefiles/pilot_study.geojson.zip
+
+docs/getting_started/tutorial.py
+

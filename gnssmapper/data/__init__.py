@@ -1,2 +1,1 @@
-from . import sp3
-from . import orbits
+from . import orbits, sp3
