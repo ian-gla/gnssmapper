@@ -37,6 +37,8 @@ class TestTime(unittest.TestCase):
             [
                 (1167264018 * 10**9 + 60 * 10**9),
                 1167264018 * 10**9 + 1 + 60 * 60 * 10**9,
+                1265446185999559028,
+                1265446185999559080,
             ]
         ).astype(INT_64)
         ts = pd.Series(
@@ -46,6 +48,26 @@ class TestTime(unittest.TestCase):
                 ),
                 pd.Timestamp(
                     year=2017, month=1, day=1, hour=1, minute=0, second=0, nanosecond=1
+                ),
+                pd.Timestamp(
+                    year=2020,
+                    month=2,
+                    day=11,
+                    hour=8,
+                    minute=49,
+                    second=27,
+                    microsecond=999559,
+                    nanosecond=28,
+                ),  # 1265446185
+                pd.Timestamp(
+                    year=2020,
+                    month=2,
+                    day=11,
+                    hour=8,
+                    minute=49,
+                    second=27,
+                    microsecond=999559,
+                    nanosecond=80,
                 ),
             ]
         )

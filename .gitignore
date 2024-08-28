@@ -4,6 +4,7 @@ build
 dist/
 build/
 venv/
+cache/
 gnssmapper.egg-info/
 *.iml 
 .idea

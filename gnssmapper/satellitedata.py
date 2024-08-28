@@ -320,6 +320,7 @@ def _get_sp3_file(date: str, orbit_type="final") -> str:
     if not importlib.resources.is_resource(data.sp3, filename):
         url = datasite + _sp3_filepath(date) + filename
         local_path = data.sp3.__path__[0] + "/" + filename
+        print(f"trying to load {url}")
         urllib.request.urlretrieve(url, local_path)
 
     zipfile = importlib.resources.read_binary(data.sp3, filename)

@@ -117,8 +117,14 @@ def _merge(points: ReceiverPoints, sats: gpd.GeoDataFrame) -> Observations:
         x=receiver.geometry.x, y=receiver.geometry.y, z=z(receiver.geometry)
     )
     location = receiver[["time", "x", "y", "z"]].drop_duplicates()
+    # location["time"] = location["time"].apply(
+    #     lambda x: x.replace(microsecond=0)
+    # )  # clear out the microseconds?
+    print(sats["time"].head())
+    print(location["time"].head())
     obs = location.merge(sats, how="right", on=["time"])
-
+    print(obs.head())
+    print(receiver[["x", "y", "z", "svid", "time"]].head())
     # add measurements if any taken
     if "svid" in receiver.columns:
         measurement = receiver.drop(columns=["geometry"])

@@ -27,7 +27,7 @@ Requirements
 GnssMapper depends on the GeoPandas package and its underlying dependencies. If you do not have these installed, we recommend following the `instructions <https://gnssmapper.readthedocs.io/en/latest/getting_started/installation.html>`__.
 
 GnssMapper has only been tested with the following setup:  
-    Python     : 3.9.1
+    Python     : 3.10.12
     GEOS       : 3.9.0  
     GDAL       : 3.4.1  
     PROJ       : 8.2.1  

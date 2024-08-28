@@ -116,6 +116,7 @@ class TestProcessRaw(unittest.TestCase):
             "FullBiasNanos": [0],
             "ReceivedSvTimeNanos": tm.gpsweek_to_gps(0, tx_.day, tx_.time),
             "State": [9],
+            "BiasNanos": [0],
         }
         self.input = pd.DataFrame(d)
         self.tx_gps = tm.gpsweek_to_gps(tx_.week, tx_.day, tx_.time).convert_dtypes()

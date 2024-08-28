@@ -174,8 +174,16 @@ class FourParamLogisticRegression:
 
         def neg_log_likelihood(theta, X, y):
             m = X.shape[0]
+            if not m:
+                return 0
             yhat = theta[3] + (theta[0] - theta[3]) * expit(theta[1] * (X - theta[2]))
-            return -(1 / m) * np.sum(y * np.log(yhat) + (1 - y) * np.log(1 - yhat))
+            try:
+                result = -(1 / m) * np.sum(
+                    y * np.log(yhat) + (1 - y) * np.log(1 - yhat)
+                )
+            except ZeroDivisionError:
+                print("Whoops")
+            return result
 
         def optimize_theta(theta, X, y):
             bounds = Bounds([0.5 + 1e-3, 1e-3, 0, 0], [1, 100, 1000, 0.5 - 1e-3])

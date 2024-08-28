@@ -301,7 +301,7 @@ def intersection_projected(rays, buildings):
 
 
 def intersection(rays, buildings, heights):
-    """3d intersection point (returns one with lowest height). Empty point if no intersect
+    """3d intersection point (returns one with the lowest height). Empty point if no intersect
     Parameters
     ----------
     rays : (n) shapely LineStrings (3d)
@@ -357,7 +357,8 @@ def intersection_projected_height(rays, buildings):
 
     """
     points = intersection_projected(rays, buildings)
-    return np.array([np.nan if p.is_empty else p.z for p in points])
+    ret = np.array([np.nan if p.is_empty else p.z for p in points])
+    return ret
 
 
 def get_fresnel(ray, buildings, heights):

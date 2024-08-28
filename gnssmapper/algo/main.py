@@ -34,6 +34,7 @@ def predict(map_: Map, obs: Observations, **kwargs) -> pd.DataFrame:
     cm.check.check_type(obs, "observations", raise_errors=True)
 
     data = prepare_data(map_, obs)
+    print(data.head())
     return fit_data(data, **kwargs)
 
 
@@ -135,6 +136,7 @@ def fit(
     }
     model_args.update(online_params)
     if not starting_params:
+        # sometimes this finds an All-NaN slice - I'm not sure why!
         starting_params = [
             (0.8, 0.1, np.nanmedian(ss), 0.2),
             (0.8, 0.1, np.nanmedian(height), 0.2),

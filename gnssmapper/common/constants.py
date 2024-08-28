@@ -162,7 +162,7 @@ supported_svids = {
 constellation_numbering = {1: "G", 3: "R", 5: "C", 6: "E"}
 
 # navigation signal states indicating no measurement ambiguity
-required_states = {"G": [1, 8], "R": [1, 8, 128], "C": [1, 8], "E": [1, 8, 2048]}
+required_states = {"G": [1, 8], "R": [1, 8, 128], "C": [1, 8], "E": [1, 8]}  # ,2048
 
 epsg_gnss_logger = "EPSG:4979"
 

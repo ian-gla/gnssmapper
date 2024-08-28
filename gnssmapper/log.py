@@ -188,8 +188,8 @@ def process_raw(gnss_raw: pd.DataFrame) -> pd.DataFrame:
     svid = constellation.str.cat(svid_string)
 
     # compute receiver time (nanos since gps epoch)
-    # gnss_raw['BiasNanos','TimeOffsetNanos] can provide subnanosecond accuracy
-    rx = gnss_raw["TimeNanos"] - gnss_raw["FullBiasNanos"]
+    # gnss_raw['BiasNanos','TimeOffsetNanos] can provide subnanosecond accuracy ?????
+    rx = gnss_raw["TimeNanos"] - (gnss_raw["FullBiasNanos"] + gnss_raw["BiasNanos"])
 
     # compute transmission time (nanos since gps epoch)
     # ReceivedSvTimeNanos (time since start of gnss period)
@@ -283,7 +283,7 @@ def join_receiver_position(
         clean_fix,
         left_on="time_ms",
         right_on="(UTC)TimeInMs",
-        suffixes=["obs", "fix"],
+        suffixes=("obs", "fix"),
         tolerance=cm.constants.join_tolerance_ms,
         direction="nearest",
     )

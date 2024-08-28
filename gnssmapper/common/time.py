@@ -83,6 +83,7 @@ def utc_to_int(time: pd.Series) -> pd.Series:
             pd.Series(
                 (time.array.days.astype("int64") * nanos_in_day)
                 + (time.array.seconds.astype("int64") * 10**9)
+                + (time.array.microseconds.astype("int64") * 10**3)
                 + time.array.nanoseconds,
                 dtype=INT_64,
                 index=time.index,
