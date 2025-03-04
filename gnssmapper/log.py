@@ -194,6 +194,10 @@ def process_raw(gnss_raw: pd.DataFrame) -> pd.DataFrame:
     # compute transmission time (nanos since gps epoch)
     # ReceivedSvTimeNanos (time since start of gnss period)
     # + gps time of start of gnss period
+
+    # The received satellite time is relative to the beginning of the system week for all constellations except for
+    # Glonass where it is relative to the beginning of the Glonass system day.
+
     tx = (
         gnss_raw["ReceivedSvTimeNanos"]
         - galileo_ambiguity(gnss_raw["ReceivedSvTimeNanos"]).where(
@@ -249,7 +253,10 @@ def galileo_ambiguity(x: np.array) -> np.array:
 def period_start_time(
     rx: pd.Series, state: pd.Series, constellation: pd.Series
 ) -> pd.Series:
-    """Calculates the start time for the gnss period"""
+    """Calculates the start time for the gnss period The received satellite time is relative to the beginning of the
+    system week for all constellations except for Glonass where it is relative to the beginning of the Glonass system
+    day.
+    """
     required_states = constellation.map(cm.constants.required_states)
     nanos_in_period = constellation.map(cm.constants.nanos_in_period).convert_dtypes()
     missing = required_states.isna() | state.isna()

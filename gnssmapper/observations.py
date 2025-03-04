@@ -123,8 +123,8 @@ def _merge(points: ReceiverPoints, sats: gpd.GeoDataFrame) -> Observations:
     print(sats["time"].head())
     print(location["time"].head())
     obs = location.merge(sats, how="right", on=["time"])
-    print(obs.head())
-    print(receiver[["x", "y", "z", "svid", "time"]].head())
+    print(obs["svid"].value_counts())
+    print(receiver["svid"].value_counts())
     # add measurements if any taken
     if "svid" in receiver.columns:
         measurement = receiver.drop(columns=["geometry"])

@@ -159,10 +159,19 @@ supported_svids = {
 }
 
 # IGS constellation identifiers
+# GPS      1 G
+# SBAS     2
+# GLOSNASS 3 R
+# QZSS     4
+# BEIDOU   5 C
+# GALLILEO 6 E
+# IRNSS    7
+
 constellation_numbering = {1: "G", 3: "R", 5: "C", 6: "E"}
 
 # navigation signal states indicating no measurement ambiguity
-required_states = {"G": [1, 8], "R": [1, 8, 128], "C": [1, 8], "E": [1, 8]}  # ,2048
+required_states = {"G": [1, 8], "R": [1, 64, 128], "C": [1, 8], "E": [1, 8]}
+# The above should be interpreted with reference to https://developer.android.com/reference/android/location/GnssMeasurement#getReceivedSvTimeNanos()
 
 epsg_gnss_logger = "EPSG:4979"
 
